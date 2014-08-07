@@ -1,0 +1,37 @@
+{
+  "name": "fnlimit",
+  "version": "0.0.1",
+  "description": "A way to limit the number of times a function is called in parallel",
+  "main": "index.js",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "dependencies": {
+    "progress": "^1.1.7"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ben-bradley/fnlimit"
+  },
+  "keywords": [
+    "recursive",
+    "limit",
+    "async",
+    "parallel",
+    "throttle"
+  ],
+  "author": "Ben Bradley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ben-bradley/fnlimit/issues"
+  },
+  "homepage": "https://github.com/ben-bradley/fnlimit"
+}
