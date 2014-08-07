@@ -5,10 +5,9 @@ var i = 0;
 fnlimit({
   times: 20,
   limit: 6,
-  progress: true,
+  progress: true, // optional
   callback: function (next) {
     setTimeout(function () {
-      //      console.log(++i);
       next();
     }, 1000);
   },
