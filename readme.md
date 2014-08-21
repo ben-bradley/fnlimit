@@ -1,4 +1,4 @@
-# FnLimit
+# FnLimit [![Build Status](https://secure.travis-ci.org/ben-bradley/fnlimit.png)](http://travis-ci.org/ben-bradley/fnlimit)
 
 A bit of code that will limit and iterate a function call.
 
