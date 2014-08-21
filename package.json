@@ -1,6 +1,6 @@
 {
   "name": "fnlimit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A way to limit the number of times a function is called in parallel",
   "main": "index.js",
   "directories": {

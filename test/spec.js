@@ -62,4 +62,26 @@ describe('fnlimit', function () {
     fnlimit(options);
   });
 
+  it('should allow for progress bars', function (done) {
+    (function () {
+      options.progress = true;
+      options.done = function (err) {
+        done();
+      }
+      fnlimit(options);
+    }).should.not.throw();
+  });
+
+  it('should allow for custom progress bars', function (done) {
+    (function () {
+      options.progress = ['[:bar] :percent', {
+        width: 40
+      }];
+      options.done = function (err) {
+        done();
+      }
+      fnlimit(options);
+    }).should.not.throw();
+  });
+
 });
