@@ -69,7 +69,6 @@ describe('fnlimit', function () {
       callback: function (item, next) {
         setTimeout(function () {
           (item).should.be.a.Number;
-          console.log(item);
           next();
         }, 10);
       },
