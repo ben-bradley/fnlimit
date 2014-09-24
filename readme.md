@@ -10,6 +10,8 @@ A bit of code that will limit and iterate a function call.
 
 ## Example
 
+Iterating a specified number of times
+
 ```js
 var fnlimit = require('../');
 
@@ -30,10 +32,34 @@ fnlimit({
 });
 ```
 
+Iterating a list of items
+
+```js
+var fnlimit = require('../');
+
+var i = 0;
+
+fnlimit({
+  limit: 3,
+  list: [ 1, 2, 3, 4, 5, 6 ],
+  progress: true, // optional
+  callback: function (item, next) {
+    setTimeout(function () {
+      console.log(item); // => 1, 2, 3, ...
+      next();
+    }, 1000);
+  },
+  done: function (err) {
+    console.log('All done!');
+  }
+});
+```
+
 ## Options
 
 - __`times`__ - _(Number)_ The number of times that you want to call the `callback`.
 - __`limit`__ - _(Number)_ The number of `callback`s to run at the same time.
+- __`list`__ - _(Array)_ A list of items to provide to the `callback`.  If specified, each item is injected into `callback` as the first argument and `next()` becomes the second arg.
 - __`progress`__ - _(Boolean|Array, optional)_ If `true`, then it will display the default progress bar with each call of `next()`.  Alternatively, you can provide an array of arguments to send to `ProgressBar()` using
 ```js
 fnlimit({
@@ -56,5 +82,6 @@ fnlimit({
 
 ## Versions
 
+- 0.0.3 - Added `list` option to inject an item into `callback`
 - 0.0.2 - Added custom progress bar option
 - 0.0.1 - Initial drop

@@ -62,6 +62,24 @@ describe('fnlimit', function () {
     fnlimit(options);
   });
 
+  it('should iterate a list', function (done) {
+    fnlimit({
+      limit: 3,
+      list: [1, 2, 3, 4, 5],
+      callback: function (item, next) {
+        setTimeout(function () {
+          (item).should.be.a.Number;
+          console.log(item);
+          next();
+        }, 10);
+      },
+      done: function (err) {
+        (err === null || err === undefined).should.equal(true, (err || {}).message);
+        done();
+      }
+    });
+  });
+
   it('should allow for progress bars', function (done) {
     (function () {
       options.progress = true;
