@@ -10,7 +10,7 @@ var Options = function () {
         next();
       }, 10);
     },
-    done: function (err) {
+    done: function (err, results) {
       console.log('all done!');
     }
   }
@@ -72,7 +72,7 @@ describe('fnlimit', function () {
           next();
         }, 10);
       },
-      done: function (err) {
+      done: function (err, result) {
         (err === null || err === undefined).should.equal(true, (err || {}).message);
         done();
       }
@@ -99,6 +99,25 @@ describe('fnlimit', function () {
       }
       fnlimit(options);
     }).should.not.throw();
+  });
+
+  it('should allow results to pass through', function (done) {
+    fnlimit({
+      limit: 3,
+      list: [1, 2, 3, 4, 5],
+      callback: function (item, next) {
+        setTimeout(function () {
+          (item).should.be.a.Number;
+          next(null, item);
+        }, 10);
+      },
+      done: function (err, results) {
+        (err === null || err === undefined).should.equal(true, (err || {}).message);
+        (results).should.be.an.Array;
+        (results.length).should.equal(5);
+        done();
+      }
+    });
   });
 
 });

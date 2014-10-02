@@ -46,7 +46,7 @@ fnlimit({
   callback: function (item, next) {
     setTimeout(function () {
       console.log(item); // => 1, 2, 3, ...
-      next();
+      next(err, 'a result!');
     }, 1000);
   },
   done: function (err) {
@@ -82,6 +82,7 @@ fnlimit({
 
 ## Versions
 
+- 0.0.4 - Modified `next()` to accept results and pass them to `done()`
 - 0.0.3 - Added `list` option to inject an item into `callback`
 - 0.0.2 - Added custom progress bar option
 - 0.0.1 - Initial drop
